@@ -1,4 +1,10 @@
+var videos = [video1: "video/demovideo1", video2: "video/demovideo2"];
+
 window.onload = function() {
+	var video = document.getElementById("video");
+	video.src = videos.video1 + getFormatExtension();
+	video.load();
+
 	var controlLinks = document.querySelectorAll("a.control");
 	for (var i = 0; i < controlLinks.length; i++) {
 		controlLinks[i].onclick = handleControl;
@@ -91,4 +97,14 @@ window.onload = function() {
 		var theClass = anchor.getAttribute("class");
 		return (theClass.indexOf("selected") >= 0);
 	}
+
+	function getFormatExtension() {
+		if (video.canPlayType("video/mp4") != "") {
+			return ".mp4";
+		} else if (video.canPlayType("video/webm") != "") {
+			return ".webm";
+		} else if (video.canPlayType("video/ogg") != "") {
+			return ".ogv";
+		}
+	}	
 }
