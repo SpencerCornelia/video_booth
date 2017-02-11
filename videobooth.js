@@ -1,4 +1,5 @@
 var videos = [video1: "video/demovideo1", video2: "video/demovideo2"];
+var effectFunction = null;
 
 window.onload = function() {
 	var video = document.getElementById("video");
@@ -58,12 +59,16 @@ window.onload = function() {
 
 		if (id == "normal") {
 			pushUnpushButtons("normal", ["western" , "noir", "scifi"]);
+			effectFunction = null;
 		} else if (id == "western") {
 			pushUnpushButtons("western", ["normal", "noir", "scifi"]);
+			effectFunction = western;
 		} else if (id == "noir") {
 			pushUnpushButtons("noir", ["normal", "western", "scifi"]);
+			effectFunction = noir;
 		} else if (id == "scifi") {
 			pushUnpushButtons("scifi", ["normal", "western", "noir"]);
+			effectFunction = scifi;
 		}
 	}
 
